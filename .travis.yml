@@ -17,6 +17,7 @@ env:
       - OS=ubuntu DIST=xenial
       - OS=ubuntu DIST=yakkety
 #      - OS=ubuntu DIST=zesty
+      - OS=ubuntu DIST=bionic
       - OS=debian DIST=wheezy
       - OS=debian DIST=jessie
       - OS=debian DIST=stretch
@@ -25,9 +26,19 @@ env:
       - OS=ubuntu DIST=xenial ARCH=i386
       - OS=ubuntu DIST=yakkety ARCH=i386
 #      - OS=ubuntu DIST=zesty ARCH=i386
+      - OS=ubuntu DIST=bionic ARCH=i386
       - OS=debian DIST=wheezy ARCH=i386
       - OS=debian DIST=jessie ARCH=i386
 #      - OS=debian DIST=stretch ARCH=i386
+
+matrix:
+  include:
+    - os: linux-ppc64le
+      env: OS=debian DIST=stretch ARCH=ppc64el
+    - os: linux-ppc64le
+      env: OS=ubuntu DIST=xenial ARCH=ppc64el
+    - os: linux-ppc64le
+      env: OS=ubuntu DIST=bionic ARCH=ppc64el
 
 script:
  - git submodule update --init --recursive
